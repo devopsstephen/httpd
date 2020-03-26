@@ -1,0 +1,15 @@
+- name: install httpd
+  yum: 
+    name: httpd
+    state: latest
+- name: start service
+  service: 
+      name: httpd
+      state: started
+- name: copy
+  template:
+      src: "{{ src_path }}"
+      dest: "{{ dest_path}}"
+  notify:
+  - restart apache
+
